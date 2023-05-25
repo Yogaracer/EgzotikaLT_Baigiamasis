@@ -25,32 +25,24 @@ public class TestListener implements ITestListener {
         saveDataIntoFile();
     }
 
-    @Override
-    public void onTestSuccess(ITestResult result) {
-        saveDataIntoFile();
-    }
-
     private void takeScreenshot() {
         TakesScreenshot takesScreenshot = (TakesScreenshot) Driver.getDriver();
         File screenshotFile = takesScreenshot.getScreenshotAs(OutputType.FILE);
 
         String dir = "./screenshots/";
-//        String fileName = "new_screenshot" + UUID.randomUUID() + ".png";
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd_HH_mm_SSS");
         String date = LocalDateTime.now().format(formatter);
 
 
         String fileName = "new_screenshot" + date + ".png";
-        File copyToFile = new File("%s%s".formatted(dir, fileName)); // ./screenshots/new_screenshot.png //cia bus sausomi printscreenai
+        File copyToFile = new File("%s%s".formatted(dir, fileName));
 
         try {
             FileUtils.copyFile(screenshotFile, copyToFile);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 
 
@@ -59,12 +51,11 @@ public class TestListener implements ITestListener {
         String date = LocalDateTime.now().format(formatter);
 
 
-        String fileBrokenLinks = "fileBrokenLinks" + date + ".txt"; // susikuriame direktorijos pavadinima, kuriame bus saugomi broken links
-        String fileValidLinks = "fileValidLinks" + date + ".txt"; // norint sukurti kitoki formata naudoti kita pletini pvz. xls, doc, pdf ir pan.
+        String fileBrokenLinks = "fileBrokenLinks" + date + ".txt";
+        String fileValidLinks = "fileValidLinks" + date + ".txt";
         String fileBrokenImages = "fileBrokenImages" + date + ".txt";
-        String dir = "C:\\Users\\User\\Documents\\PI testavimas\\Vilniuscoding School\\MySQL\\Selenium_demo\\link_reports\\"; //vieta kurioje bus issaugomi failai. Prideti papildomai \\ gale kad issaugotu direktorijoje link_reports
-
-        Path pathFileBrokenLinks = Paths.get(dir.concat(fileBrokenLinks)); //sujungiame direktorijos ir filo kuriame bus issaugotas linkas pavadinimai
+        String dir = "C:\\Users\\User\\Documents\\PI testavimas\\Vilniuscoding School\\Baigiamasis darbas\\EgzotikaLT\\link_reports\\";
+        Path pathFileBrokenLinks = Paths.get(dir.concat(fileBrokenLinks));
         Path pathFileValidLinks = Paths.get(dir.concat(fileValidLinks));
         Path pathFileBrokenImages = Paths.get(dir.concat(fileBrokenImages));
 
