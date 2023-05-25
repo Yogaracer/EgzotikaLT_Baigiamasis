@@ -19,7 +19,7 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onTestFailure(ITestResult result) {
-        if (!Common.brokenImages.isEmpty() && !Common.validLinks.isEmpty()) {
+        if (result.getStatus() == ITestResult.FAILURE) {
             takeScreenshot();
         }
         saveDataIntoFile();
