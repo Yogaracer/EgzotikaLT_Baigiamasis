@@ -20,4 +20,8 @@ public class LoginPage {
     public static void clickOnButtonSignIn() {
         Common.clickOnElement(Locators.Egzotika.Login.buttonSignIn);
     }
+
+    public static String readErrorNotification() {
+        return Common.getTextFromElement(Locators.Egzotika.Login.errorNotification);
+    }
 }
