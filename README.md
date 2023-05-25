@@ -43,12 +43,17 @@ Expected result: Customer Account page contains Contact information: <br>
 Expected result: Notification with error message "The account sign-in was incorrect or your account is disabled 
 temporarily. Please wait and try again later." appeared <br>
 
-### 4.  Products link verification
+### 4.  Products search by dimensions 
 
 4.1 Open www.egzotika.en website <br>
-4.2 Click on menu item "Tyres" <br>
+4.2 Click on search category "Tyres" <br>
+4.3 Click on search category "By dimensions" <br>
+4.4 Insert product width "195" in filter category <br>
+4.5 Insert product height "45" in filter category <br>
+4.6 Insert product rim size "22" in filter category <br>
+4.7 Click on button "Search" <br>
 
-Expected result: all product links are valid
+Expected result: all product contains attribute "195/45 22" <br>
 
 ### 5. Add product into shopping cart
 5.1 Open www.egzotika.en website <br>
