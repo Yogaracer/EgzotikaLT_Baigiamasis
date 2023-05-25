@@ -35,7 +35,7 @@ Expected result: My Account page contains Contact information: <br>
 - email entered into login form <br>
 - user first name and last name entered in the registration form <br>
 
-### 3.  Login into account using invalid user name 
+### 3.  Login into account using invalid email 
 
 3.1 Open www.egzotika.en website <br>
 3.2 Click on „Sign In“ header link <br>
