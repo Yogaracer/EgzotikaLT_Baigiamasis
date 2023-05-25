@@ -11,8 +11,8 @@ public class Locators {
         public class Home {
 
             public static By createAnAccountLink = By.xpath("//a[contains(text(),'Create an Account')]");
-            public static By loginLink = By.xpath("//li[@class='link authorization-link']//a[contains(text(),'Sign In')]");
-
+            public static By loginLink = By.xpath("//li[@class='link authorization-link']//" +
+                    "a[contains(text(),'Sign In')]");
         }
 
         public class NewAccount {
@@ -37,6 +37,8 @@ public class Locators {
             public static By inputUserEmail = By.xpath("//*[@id=\"email\"]");
             public static By inputUserPassword = By.xpath("//*[@id=\"pass\"]");
             public static By buttonSignIn = By.xpath("//*[@id=\"send2\"]");
+            public static By errorNotification = By.xpath("//div[contains(text(),'The account sign-in " +
+                    "was incorrect or your account is disabled temporarily. Please wait and try again later.')]");
         }
 
         public class MyAccount {
@@ -45,6 +47,11 @@ public class Locators {
                     "div[@class='box-content']//p");
         }
 
+
+        public class Padangos {
+
+            public static By linkGroup = By.xpath("//div[@class='products wrapper list                products-list']//a");
+        }
     }
 }
 
