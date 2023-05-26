@@ -9,7 +9,7 @@ Github repository: https://github.com/Yogaracer/EgzotikaLT_Baigiamasis
 
 ### 1. New user registration with valid data
 
-1.1 Open https://www.egzotika.lt/en/customer/account/ website <br>
+1.1 Open https://www.egzotika.lt/en/ website <br>
 1.2 Click on „Create an Account“ header link <br>
 1.3 Insert First Name in a line „First Name" <br>
 1.4  Insert Last Name in a line „Last Name“ <br>
@@ -19,48 +19,62 @@ Github repository: https://github.com/Yogaracer/EgzotikaLT_Baigiamasis
 1.8 Click a button „Create an account“<br>
 
 Expected result: My Account page contains Contact information: <br>
-- email entered in the registration form
+- email entered in the registration form <br>
 - user first name and last name entered in the registration form <br>
 
-### 2. Login into account using valid user name and password <br>
+### 2. New user registration with invalid data
+2.1 Open https://www.egzotika.lt/en/ website <br>
+2.2 Click on „Create an Account“ header link <br>
+2.3  Insert valid First Name in a line „First Name" <br>
+2.4  Insert valid Last Name in a line „Last Name“ <br>
+2.5  Insert already registered email in a line „Email“ <br>
+2.6  Insert valid password in a line „Password“ <br>
+2.7 Insert the same valid password in a line „Confirm password“ <br>
+2.8 Click a button „Create an account“<br>
 
-2.1 Open https://www.egzotika.lt/en/customer/account/ website <br>
-2.2 Insert valid email address in line "Email" <br>
-2.3 Insert valid password in line "Password" <br>
-2.4 Click on button „Sign In“ <br>
+Expected result:  error notification "There is already an account with this email address. If you are sure that it is your email address, click here to get your password and access your account." appeared <br>
 
-Expected result: Customer Account page contains Contact information: <br>
-- email entered into login form <br>
-- user first name and last name entered in the registration form <br>
+### 3. Login into account using valid user name and password <br>
 
-### 3.  Login into account using invalid email 
+3.1 Open https://www.egzotika.lt/en/ website <br>
+3.2 Click on "Sign In" header link <br>
+3.3 Insert valid email address in line "Email" <br>
+3.4 Insert valid password in line "Password" <br>
+3.5 Click on button „Sign In“ <br>
 
-3.1 Open https://www.egzotika.lt/en/customer/account/ website <br>
-3.2 Insert invalid email address in line "Email" <br>
-3.3 Insert valid password in line "Password" <br>
-3.4 Click on button „Sign In“ <br>
+Expected result: header link name "SignIn" is changed to name "Your Dashboard"
+
+### 4.  Login into account using invalid email 
+
+4.1 Open https://www.egzotika.lt/en/ website <br>
+4.2 Click on "Sign In" header link <br>
+4.3 Insert invalid email address in line "Email" <br>
+4.4 Insert valid password in line "Password" <br>
+4.5 Click on button „Sign In“ <br>
 
 Expected result: Notification with error message "The account sign-in was incorrect or your account is disabled 
 temporarily. Please wait and try again later." appeared <br>
 
-### 4.  Products search by dimensions 
+### 5.  Products search by dimensions 
 
-4.1 Open www.egzotika.en website <br>
-4.2 Click on search category "Tyres" <br>
-4.3 Click on search category "By dimensions" <br>
-4.4 Insert product width "195" in filter category <br>
-4.5 Insert product height "45" in filter category <br>
-4.6 Insert product rim size "22" in filter category <br>
-4.7 Click on button "Search" <br>
-
-Expected result: all product contains attribute "195/45 22" <br>
-
-### 5. Add product into shopping cart
 5.1 Open www.egzotika.en website <br>
-5.2 Click on menu item "Tyres" <br>
-5.3 Click on first item "Add to cart" <br>
-5.4 Click on second item "Add to cart" <br>
-5.5 Open Shopping cart <br>
+5.2 Click on search category "Tyres" <br>
+5.3 Click on search category "By dimensions" <br>
+5.4 Insert product width "195" in a filter category <br>
+5.5 Insert product height "45" in a filter category <br>
+5.6 Insert product rim size "15" in a filter category <br>
+5.7 Click on button "Search" <br>
+
+Expected result: all product in the list contains attributes "195", "45", "R15". <br>
+
+### 6. Add product into shopping cart
+6.1 Open www.egzotika.en website <br>
+6.2 Click on menu item "Tyres" <br>
+6.3 Click on any first item button "Add to cart" <br>
+6.4 Click on menu item "Tyres" <br>
+6.5 Click on any second item button "Add to cart" <br>
+6.6 Click on menu item "Tyres" <br>
+6.7 Click on any third item button "Add to cart" <br>
 
 Expected result: shopping cart contains all added items 
 
