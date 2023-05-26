@@ -5,19 +5,8 @@ import lt.marius.pom.pages.Locators;
 
 public class CustomerAccountPage {
 
-    public static void open() {
-        Common.setUpDriver();
-        Common.openUrl("https://www.egzotika.lt/en/customer/account/");
-    }
-
-
-    public static void clickOnCreateAnAccountHeaderLink() {
-        Common.clickOnElement(Locators.Egzotika.CustomerAccount.createAnAccountLink);
-    }
-
     public static void insertUserFirstName(String messageFirstName) {
         Common.sendKeysToElement(Locators.Egzotika.CustomerAccount.userFirstName, messageFirstName);
-
     }
 
     public static void insertUserLastName(String messageLastName) {
@@ -41,13 +30,12 @@ public class CustomerAccountPage {
     }
 
     public static String readContactInformation() {
+
         return Common.getTextFromElement(Locators.Egzotika.CustomerAccount.contactInformation);
     }
 
-
     public static void insertSigninEmailAddress(String messageEmail) {
         Common.sendKeysToElement(Locators.Egzotika.CustomerAccount.signInEmail, messageEmail);
-
     }
 
     public static void insertSigninPassword(String messagePassword) {
@@ -59,6 +47,14 @@ public class CustomerAccountPage {
     }
 
     public static String readErrorNotification() {
-        return Common.getTextFromElement(Locators.Egzotika.CustomerAccount.errorNotification);
+        return Common.getTextFromElement(Locators.Egzotika.CustomerAccount.signInErrorNotification);
+    }
+
+    public static String readRegistrationErrorNotification() {
+        return Common.getTextFromElement(Locators.Egzotika.CustomerAccount.repeatedRegistrationErrorNotification);
+    }
+
+    public static String readHeaderLinkName() {
+        return Common.getTextFromElement(Locators.Egzotika.CustomerAccount.headerLinkName);
     }
 }

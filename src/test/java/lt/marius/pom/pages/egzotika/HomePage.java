@@ -2,7 +2,6 @@ package lt.marius.pom.pages.egzotika;
 
 import lt.marius.pom.pages.Common;
 import lt.marius.pom.pages.Locators;
-import org.testng.annotations.Test;
 
 public class HomePage {
     public static void open() {
@@ -10,13 +9,19 @@ public class HomePage {
         Common.openUrl("https://www.egzotika.lt/en/");
     }
 
+    public static void clickOnSignInHeaderLink() {
+        Common.clickOnElementByAction(Locators.Egzotika.Home.menuItemSignInLink);
+    }
+
     public static void clickOnCreateAnAccountHeaderLink() {
-        Common.clickOnElement(Locators.Egzotika.Home.createAnAccountLink);
+        Common.clickOnElement(Locators.Egzotika.Home.menuItemAnAccountLink);
     }
 
-    public static void clickOnLoginHeaderLink() {
-        Common.clickOnElement(Locators.Egzotika.Home.loginLink);
+    public static void clickOnMenuItemTyres() {
+        Common.clickOnElementByAction(Locators.Egzotika.Home.menuItemTyres);
     }
 
+  }
 
-}
+
+
