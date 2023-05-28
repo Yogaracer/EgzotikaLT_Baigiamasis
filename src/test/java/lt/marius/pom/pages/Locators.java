@@ -8,12 +8,23 @@ public class Locators {
 
         public class Home {
 
-            public static By menuItemTyres = By.xpath("//div[@class='header-navigation']// " +
-                    "a[@id='sm_megamenu_28']");
             public static By menuItemSignInLink = By.xpath("//div[@class='page-wrapper']//" +
                     "a[contains(text(),'Sign In')]");
             public static By menuItemAnAccountLink = By.xpath("//a[contains(text(),'Create an Account')]");
 
+            public static By tyresWidthSelector = By.xpath("//form[@class='by-dimensions']//div[@class='control'][1]//span");
+            public static By tyresWidth = By.xpath("//form[@class='by-dimensions']//div[@class='control'][1]//div[@class='chosen-drop']//input");
+
+            public static By tyresHeightSelector = By.xpath("//form[@class='by-dimensions']//div[@class='control'][2]//span");
+            public static By tyresHeight = By.xpath("//form[@class='by-dimensions']//div[@class='control'][2]//div[@class='chosen-drop']//input");
+
+            public static By rimSizeSelector = By.xpath("//form[@class='by-dimensions']//div[@class='control'][3]//span");
+            public static By rimSize = By.xpath("//form[@class='by-dimensions']//div[@class='control'][3]//div[@class='chosen-drop']//input");
+
+            public static By tyresSeasonSelector =By.xpath("//form[@class='by-dimensions']//div[@class='control'][4]//span");
+            public static By tyresSeason = By.xpath("//form[@class='by-dimensions']//div[@class='control'][4]//div[@class='chosen-drop']//input");
+
+            public static By buttonSearch = By.xpath("//div[@class='search-container']//button[@title='Search']");
         }
 
         public class CustomerAccount {
@@ -39,6 +50,11 @@ public class Locators {
             public static By headerLinkName = By.xpath("//div[@class='page-wrapper']//" +
                     "span[@class='dashboard']");
         }
+
+        public class TyresCatalog {
+
+            public static By tyresSizeAttributes = By.xpath("//div[@id='amasty-shopby-product-list']//span[@class='attribute-item size']");
+                }
     }
 }
 

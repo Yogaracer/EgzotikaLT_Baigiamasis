@@ -59,13 +59,13 @@ temporarily. Please wait and try again later." appeared <br>
 
 5.1 Open www.egzotika.en website <br>
 5.2 Click on search category "Tyres" <br>
-5.3 Click on search category "By dimensions" <br>
-5.4 Insert product width "195" in a filter category <br>
-5.5 Insert product height "45" in a filter category <br>
-5.6 Insert product rim size "15" in a filter category <br>
+5.3 Insert product width "225" in a filter category <br>
+5.4 Insert product height "45" in a filter category <br>
+5.5 Insert product rim size "19" in a filter category <br>
+5.6 Insert product season "All seasons" <br>
 5.7 Click on button "Search" <br>
 
-Expected result: all product in the list contains attributes "195", "45", "R15". <br>
+Expected result: all product in the search list contains attributes "225", "45", "R19" <br>
 
 ### 6. Add product into shopping cart
 6.1 Open www.egzotika.en website <br>
