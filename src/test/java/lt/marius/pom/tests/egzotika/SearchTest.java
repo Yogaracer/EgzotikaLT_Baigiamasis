@@ -7,10 +7,11 @@ import org.testng.annotations.*;
 
 import java.util.*;
 
-public class HomeTest extends TestBase {
+public class SearchTest extends TestBase {
     @BeforeMethod
     @Override
     public void setUp() {
+
         HomePage.open();
     }
 
@@ -22,7 +23,6 @@ public class HomeTest extends TestBase {
         String tyresSeason = "Allseason";
 
         String expectedResult = "225/ " + "45 " + "R19";
-        List<String> actualResult;
 
         HomePage.clickOnTyresWidthSelector();
         HomePage.enterTyresWidth(tyresWidth);
@@ -38,8 +38,7 @@ public class HomeTest extends TestBase {
         HomePage.confirmTyresSeason();
         HomePage.clickOnButtonSearch();
 
-        actualResult = TyresCatalogPage.readSearchedTyresSizeAttributes();
-
+        List<String> actualResult = TyresPage.readFoundTyresSizeAttributes();
         Assert.assertTrue(actualResult.contains(expectedResult));
 
     }
