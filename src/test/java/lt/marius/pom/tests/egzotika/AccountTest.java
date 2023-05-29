@@ -1,13 +1,13 @@
 package lt.marius.pom.tests.egzotika;
 
-import lt.marius.pom.pages.egzotika.CustomerAccountPage;
+import lt.marius.pom.pages.egzotika.AccountPage;
 import lt.marius.pom.pages.egzotika.HomePage;
 import lt.marius.pom.tests.TestBase;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class CustomerAccountTest extends TestBase {
+public class AccountTest extends TestBase {
     @BeforeMethod
     @Override
     public void setUp() {
@@ -16,22 +16,22 @@ public class CustomerAccountTest extends TestBase {
 
     @Test
     public static void testNewUserRegistrationWithValidData() {
-        String messageFirstName = "kudas";
-        String messageLastName = "kudaitis";
-        String messageEmail = "kudaskudaitis@gmail.com";
-        String messagePassword = "9858dropdown";
+        String messageFirstName = "liudas";
+        String messageLastName = "liudaitis";
+        String messageEmail = "liudasliudaitis@gmail.com";
+        String messagePassword = "9822dropdown";
 
-        String expectedResult = "kudas kudaitis\nkudaskudaitis@gmail.com";
+        String expectedResult = "liudas liudaitis\nliudasliudaitis@gmail.com";
         String actualResult;
 
         HomePage.clickOnCreateAnAccountHeaderLink();
-        CustomerAccountPage.insertUserFirstName(messageFirstName);
-        CustomerAccountPage.insertUserLastName(messageLastName);
-        CustomerAccountPage.insertUserEmailAddress(messageEmail);
-        CustomerAccountPage.insertUserPassword(messagePassword);
-        CustomerAccountPage.confirmUserPassword(messagePassword);
-        CustomerAccountPage.clickOnButtonCreateAnAccount();
-        actualResult = CustomerAccountPage.readContactInformation();
+        AccountPage.insertUserFirstName(messageFirstName);
+        AccountPage.insertUserLastName(messageLastName);
+        AccountPage.insertUserEmailAddress(messageEmail);
+        AccountPage.insertUserPassword(messagePassword);
+        AccountPage.confirmUserPassword(messagePassword);
+        AccountPage.clickOnButtonCreateAnAccount();
+        actualResult = AccountPage.readContactInformation();
 
         Assert.assertEquals(actualResult, expectedResult);
     }
@@ -48,13 +48,14 @@ public class CustomerAccountTest extends TestBase {
         String actualResult;
 
         HomePage.clickOnCreateAnAccountHeaderLink();
-        CustomerAccountPage.insertUserFirstName(messageFirstName);
-        CustomerAccountPage.insertUserLastName(messageLastName);
-        CustomerAccountPage.insertUserEmailAddress(messageEmail);
-        CustomerAccountPage.insertUserPassword(messagePassword);
-        CustomerAccountPage.confirmUserPassword(messagePassword);
-        CustomerAccountPage.clickOnButtonCreateAnAccount();
-        actualResult = CustomerAccountPage.readRegistrationErrorNotification();
+        AccountPage.insertUserFirstName(messageFirstName);
+        AccountPage.insertUserLastName(messageLastName);
+        AccountPage.insertUserEmailAddress(messageEmail);
+        AccountPage.insertUserPassword(messagePassword);
+        AccountPage.confirmUserPassword(messagePassword);
+        AccountPage.clickOnButtonCreateAnAccount();
+        AccountPage.sleep(3000);
+        actualResult = AccountPage.readRegistrationErrorNotification();
 
         Assert.assertEquals(actualResult, expectedResult);
     }
@@ -68,10 +69,10 @@ public class CustomerAccountTest extends TestBase {
         String actualResult;
 
         HomePage.clickOnSignInHeaderLink();
-        CustomerAccountPage.insertSigninEmailAddress(messageEmail);
-        CustomerAccountPage.insertSigninPassword(messagePassword);
-        CustomerAccountPage.clickOnButtonSignIn();
-        actualResult = CustomerAccountPage.readHeaderLinkName();
+        AccountPage.insertSigninEmailAddress(messageEmail);
+        AccountPage.insertSigninPassword(messagePassword);
+        AccountPage.clickOnButtonSignIn();
+        actualResult = AccountPage.readHeaderLinkName();
 
         Assert.assertEquals(actualResult, expectedResult);
 
@@ -88,11 +89,12 @@ public class CustomerAccountTest extends TestBase {
         String actualResult;
 
         HomePage.clickOnSignInHeaderLink();
-        CustomerAccountPage.insertSigninEmailAddress(messageEmail);
-        CustomerAccountPage.insertSigninPassword(messagePassword);
-        CustomerAccountPage.clickOnButtonSignIn();
+        AccountPage.insertSigninEmailAddress(messageEmail);
+        AccountPage.insertSigninPassword(messagePassword);
+        AccountPage.clickOnButtonSignIn();
+        AccountPage.sleep(3000);
 
-        actualResult = CustomerAccountPage.readErrorNotification();
+        actualResult = AccountPage.readErrorNotification();
 
         Assert.assertEquals(actualResult, expectedResult);
     }

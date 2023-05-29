@@ -3,7 +3,11 @@ package lt.marius.pom.pages.egzotika;
 import lt.marius.pom.pages.Common;
 import lt.marius.pom.pages.Locators;
 
-public class CustomerAccountPage {
+public class AccountPage {
+
+    public static void sleep(int millis) {
+        Common.sleep(millis);
+    }
 
     public static void insertUserFirstName(String messageFirstName) {
         Common.sendKeysToElement(Locators.Egzotika.CustomerAccount.userFirstName, messageFirstName);
@@ -57,4 +61,6 @@ public class CustomerAccountPage {
     public static String readHeaderLinkName() {
         return Common.getTextFromElement(Locators.Egzotika.CustomerAccount.headerLinkName);
     }
+
+
 }
