@@ -2,18 +2,16 @@ package lt.marius.pom.pages.egzotika;
 
 import lt.marius.pom.pages.Common;
 import lt.marius.pom.pages.Locators;
-import lt.marius.pom.utils.*;
-import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.*;
-import org.xml.sax.*;
-
-import static lt.marius.pom.pages.Common.getElement;
 
 
 public class HomePage {
     public static void open() {
         Common.setUpDriver();
         Common.openUrl("https://www.egzotika.lt/en/");
+    }
+
+    public static void sleep(int millis) {
+        Common.sleep(millis);
     }
 
     public static void clickOnSignInHeaderLink() {
@@ -75,6 +73,8 @@ public class HomePage {
     public static void clickOnButtonSearch() {
         Common.clickOnElementByAction(Locators.Egzotika.Home.buttonSearch);
     }
+
+    public static void clickOnMenuItemTyres() {Common.clickOnElementByAction(Locators.Egzotika.Home.menuItemTyres); }
 }
 
 
