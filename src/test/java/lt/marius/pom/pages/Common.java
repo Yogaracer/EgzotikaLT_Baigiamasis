@@ -1,38 +1,17 @@
 package lt.marius.pom.pages;
 
-import lt.marius.pom.utils.Driver;
+import lt.marius.pom.utils.*;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.interactions.*;
+import org.openqa.selenium.support.ui.*;
 
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.time.Duration;
-import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 
 public class Common {
 
-    public static List<String> brokenLinks = new ArrayList<>();
-
-    public static List<String> validLinks = new ArrayList<>();
-
-    public static List<String> brokenImages = new ArrayList<>(); // static reiskia pasieksime is bet kurios vietos
-
-
     public static void setUpDriver() {
         Driver.setDriver();
-    }
-
-    public static void setUpEdgeDriver() {
-        Driver.setDriverWithEdge();
     }
 
     public static void openUrl(String url) {
@@ -52,7 +31,7 @@ public class Common {
         }
     }
 
-    private static WebElement getElement(By locator) {
+    public static WebElement getElement(By locator) {
         return Driver.getDriver().findElement(locator);
     }
 
@@ -72,50 +51,15 @@ public class Common {
         return getElement(locator).getText();
     }
 
-    public static Boolean getStatusOfCheckBox(By locator) {
-
-        return getElement(locator).isEnabled();
-    }
-
-    public static List<Boolean> getStatusesOfCheckBoxGroup(By locator) {
-        List<WebElement> elements = getElements(locator);
-        List<Boolean> statusList = new ArrayList<>();
-
-        for (WebElement element : elements) {
-            statusList.add(element.isSelected()); // is selected - reiskia pazymetas salygoje pvz radio buttonas
-        }
-        return statusList;
-    }
-
-    public static void selectOptionByValue(By locator, String value) {
-        getSelectElement(locator).selectByValue(value);
-
-    }
-
-    public static void selectOptionGroupByValue(By locator, List<String> selectValues) {
-        Select selectElement = getSelectElement(locator);
-
-        for (String value : selectValues) {
-            selectElement.selectByValue(value);
-        }
-    }
-
     private static Select getSelectElement(By locator) {
         WebElement element = getElement(locator);
         Select selectElement = new Select(element);
         return selectElement;
     }
 
-
     public static List<Boolean> getStatusesOfSelectedOptionsGroup(By locator, List<String> selectValues) {
         List<Boolean> selectedStatusList = new ArrayList<>();
         List<WebElement> elements = getSelectElement(locator).getAllSelectedOptions();
-
-//        for (String value : selectValues) {
-////            for (WebElement element: elements) {
-////                if(element.getAttribute("value").equals(value)){
-////                    selectedStatusList.add(element.isSelected());
-//            break;
 
         for (WebElement element : elements) {
             selectedStatusList.add(element.isSelected());
@@ -127,141 +71,14 @@ public class Common {
         return getElement(locator).getAttribute(attributeName);
     }
 
-    public static boolean verifyLink(By locator, String attributeName) { //sukurus metoda reikia pakeisti parametrus i  locator ir attribute name
-        WebElement element = getElement(locator);
-        String link = element.getAttribute(attributeName);
-        return checkHttpResponseCode(link, element);
-    }
-
-    public static boolean verifyAllLinks(By locator, String attributeName) { //tikrina visu linku statusa
-
-        List<WebElement> elements = getElements(locator);
-        boolean testStatus = true; //default reiksme true
-
-        for (WebElement element : elements) { // kiekviena elementa pasiimame
-            String link = element.getAttribute(attributeName); // pasiimame elemento linka
-            if (!checkHttpResponseCode(link, element)) { //ciklas suksis kol testuojamas linkas bus Broken - false
-                testStatus = false;
-            }
-        }
-        return testStatus;
-    }
-
-    private static boolean checkHttpResponseCode(String link, WebElement element) {
-        try {
-            URL url = new URL(link); //raudonas pabraukimas reiskia exeption, ji reikia irengti i TRY CATCH bloka
-            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-            httpURLConnection.setConnectTimeout(8000);
-            httpURLConnection.connect();
-
-
-            if (httpURLConnection.getResponseCode() >= 400) { // jei kodas > 400 sugeneruojama zinute
-                brokenLinks.add(
-                        "Resp.Code: %s, Resp.Message: %s, Broken link: %s".formatted(
-                                httpURLConnection.getResponseCode(),
-                                httpURLConnection.getResponseMessage(),
-                                link
-                        )
-                );
-
-                return false;
-            } else {
-                validLinks.add(
-                        "Resp.Code: %s, Resp.Message: %s, Valid Link: %s".formatted(
-                                httpURLConnection.getResponseCode(),
-                                httpURLConnection.getResponseMessage(),
-                                link
-                        )
-                );
-
-            }
-
-        } catch (MalformedURLException e) {
-            e.printStackTrace(); //pakeiciame default eilute i e.printStackTrace()
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        if (element.getTagName().equals("img")) { // pagal tag pavadinima galime atpazinti ar vykdyti si metoda
-            boolean isImageVisible = checkImageDisplayValidation(element); // skirta neveikianciu image failu ataskaitai generuoti
-
-            if (!isImageVisible) {
-                brokenImages.add(
-                        "Broken image, url: %s".formatted(
-                                link
-                        )
-                );
-            }
-            return isImageVisible;
-        }
-        return true;
-    }
-
-    private static boolean checkImageDisplayValidation(WebElement element) {
-        JavascriptExecutor javascriptExecutor = (JavascriptExecutor) Driver.getDriver(); // vienas is budu apsirasyti, nuskaityti, paklikinti
-
-        return (Boolean) javascriptExecutor.executeScript(
-                "return (typeof arguments[0].naturalWidth !=\"undefined\" && arguments[0].naturalWidth > 0);",
-                element);
-    }
-
-    public static void waitForElementToBeClickable(By locator) {
-        System.out.println( // testo rezultate spausdina kada koki statusa igyja mygtukas
-                "IsEnabled: " + Common.getElement(locator).isEnabled() +
-                        "\n\t starting time: " + LocalTime.now().getSecond()
-        );
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.elementToBeClickable(locator));
-    }
-
-    public static void waitForElementAttributeContains(String attributeName, String attributeValue, By locator) {
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.attributeContains(locator, attributeName, attributeValue));
-    }
-
-    public static void waitForElementToBeVisible(By locator) {
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-    }
-
-    public static boolean waitForElementToBeClickableCustomised(By locator) {
-
-        int waitingSeconds = 5; // ciklas kuris tikrina ar elementas yra isEnabled kas 0.5 sekundes naudojant wait statusa
-
-        for (int i = 0; i < (waitingSeconds * 2); i++) {
-            if (getElement(locator).isEnabled()) {
-                return true;
-            }
-            sleep(500); // tikrina kas 0.5 sekundes
-        }
-        return false;
-    }
-
-
-    public static boolean waitForElementToBeVisibleCustomised(By locator) { //naudojamas su reklaminiais skydeliais kai
-        // jie pasirodo arba nepasirodo
-        int waitingSeconds = 7;
-
-        for (int i = 0; i < (waitingSeconds * 2); i++) {
-            try {
-                getElement(locator);
-                return true;
-            } catch (NoSuchElementException e) {
-                sleep(500);
-            }
-        }
-        return false;
-    }
-
     public static String getWindowHandleName() {
         return Driver.getDriver().getWindowHandle();
     }
 
     public static String getWindowHandleNames(String windowHandleName) {
-        Set<String> allWindowHandles = Driver.getDriver().getWindowHandles(); // grazina set tipo stringus , set
-        // neleidzia pavadinimams dubliuotis
-        for (String childWindowName : allWindowHandles) { // lyginame main ir child langu pavadinimus
-            if (!childWindowName.equals(windowHandleName)) { // jei langu pavadinimai nesutaps, grazinti childWindowName
+        Set<String> allWindowHandles = Driver.getDriver().getWindowHandles();
+        for (String childWindowName : allWindowHandles) {
+            if (!childWindowName.equals(windowHandleName)) {
                 return childWindowName;
             }
         }
@@ -280,49 +97,11 @@ public class Common {
         Driver.getDriver().manage().window().maximize();
     }
 
-    public static void acceptAlert() {
-        Driver.getDriver().switchTo().alert().accept();
-    }
-
-    public static void dismissAlert() {
-        Driver.getDriver().switchTo().alert().dismiss();
-    }
-
-    public static String getTextFromAlertBox() {
-        return Driver.getDriver().switchTo().alert().getText();
-    }
-
-    public static boolean waitForAlertToBeVisible() {
-        int waitingSeconds = 7;
-
-        for (int i = 0; i < (waitingSeconds * 2); i++) {
-            try {
-                Driver.getDriver().switchTo().alert();
-                return true;
-            } catch (NoAlertPresentException e) {
-                sleep(500);
-            }
-        }
-        return false;
-    }
-
-    public static void sendKeysToAlertBox(String message) {
-        Driver.getDriver().switchTo().alert().sendKeys(message);
-    }
-
     public static void clickOnElementByAction(By locator) {
 
         Actions actions = new Actions(Driver.getDriver());
         actions.moveToElement(getElement(locator)).
                 click().
-                build().
-                perform();
-    }
-
-    public static void clickDoubleOnElementWithAction(By locator) {
-        Actions actions = new Actions(Driver.getDriver());
-        actions.moveToElement(getElement(locator)).
-                doubleClick().
                 build().
                 perform();
     }
@@ -336,35 +115,10 @@ public class Common {
 
     }
 
-    public static void selectOptionGroupByValueWithActions(By locator, List<String> selectValues) {
-        List<WebElement> options = getSelectElement(locator).getOptions();
-        Actions actions = new Actions(Driver.getDriver());
-        actions.keyDown(Keys.CONTROL);
-
-
-        //LIST 01 , skirtas parinktiems miestams is selectedValues paimti
-        for (String value : selectValues) {
-
-            //LIST 02, skirtas patikrinti ar parinktu miestu pavadinimai sutampa su bendrame sarase esanciu miestu pavadinimais
-            for (WebElement option : options) {
-                if (value.equals(option.getAttribute("value"))) {
-                    actions.click(option);
-                    break;
-                }
-            }
-        }
-        actions.build().perform();
-    }
-
-    public static void executeCtrlADeleteSendKeysWithActions(By locator, String message) {
+    public static void executeSendKeysWithActions(By locator) {
         Actions actions = new Actions(Driver.getDriver());
         actions.
                 click(getElement(locator))
-                .keyDown(Keys.CONTROL)
-                .sendKeys("a")
-                .keyUp(Keys.CONTROL)
-                .sendKeys(Keys.DELETE)
-                .sendKeys(message)
                 .sendKeys(Keys.ENTER)
                 .build()
                 .perform();
@@ -373,7 +127,7 @@ public class Common {
     public static void setAttributeValueWithJavascriptExecutor(By locator, String attributeName, String value) {
         JavascriptExecutor javascriptExecutor = (JavascriptExecutor) Driver.getDriver();
         javascriptExecutor.executeScript(
-                "arguments[0].%s='%s';".formatted(attributeName, value), // %s - kintamasis
+                "arguments[0].%s='%s';".formatted(attributeName, value),
                 getElement(locator)
         );
     }
@@ -382,12 +136,13 @@ public class Common {
 
         List<String> listOfElementsText = new ArrayList<>();
 
-        for (WebElement element : getElements(locator)){
-            listOfElementsText.add(element.getText())        ;
+        for (WebElement element : getElements(locator)) {
+            listOfElementsText.add(element.getText());
         }
         return listOfElementsText;
     }
-}
+
+ }
 
 
 
