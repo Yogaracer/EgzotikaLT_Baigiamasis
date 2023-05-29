@@ -62,7 +62,7 @@ temporarily. Please wait and try again later." appeared <br>
 5.3 Insert product width "225" in a filter category <br>
 5.4 Insert product height "45" in a filter category <br>
 5.5 Insert product rim size "19" in a filter category <br>
-5.6 Insert product season "All seasons" <br>
+5.6 Insert product season "All seasons" in a filter category <br>
 5.7 Click on button "Search" <br>
 
 Expected result: all product in the search list contains attributes "225", "45", "R19" <br>
@@ -75,7 +75,7 @@ Expected result: all product in the search list contains attributes "225", "45",
 6.5 Click on "Winter" option on the left side "Season" options menu  <br>
 6.6 Add product "ROADSTONE EUROVIS ALPINE WH1 (2022)" to cart" by clicking button<br>
 6.7 Click on menu item "Tyres" <br>
-6.8 6.4 Click on "Summer" option on the left side "Season" options menu  <br>
+6.8 Click on "Summer" option on the left side "Season" options menu  <br>
 6.9 Add product "STARMAXX NOVARO ST532 (2020-2023)" to cart" by clicking button<br>
 
 Expected result: shopping cart contains 3 items 
