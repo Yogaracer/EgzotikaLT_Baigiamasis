@@ -20,11 +20,9 @@ public class Driver {
         options.addArguments("start-maximized");
         options.addArguments("--force-device-scale-factor=0.7");
         options.addArguments("--disable-notifications");
-//        options.addArguments("--headless=new");
 
         drivers.set(new ChromeDriver(options));
         drivers.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-
     }
 
     public static WebDriver getDriver() {
@@ -35,6 +33,4 @@ public class Driver {
         drivers.get().quit();
         drivers.remove();
     }
-
-
 }

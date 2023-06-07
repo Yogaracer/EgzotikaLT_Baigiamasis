@@ -19,18 +19,16 @@ public class AddToCartTest extends TestBase {
 
         TyresPage.chooseTyresSeason1();
         TyresPage.addToCartProduct1();
-        TyresPage.sleep(6000);
-        CartPage.clickOnMenuItemTyres();
+        TyresPage.clickOnMenuItemTyres();
         TyresPage.chooseTyresSeason2();
         TyresPage.addToCartProduct2();
-        TyresPage.sleep(6000);
-        CartPage.clickOnMenuItemTyres();
+        TyresPage.clickOnMenuItemTyres();
         TyresPage.chooseTyresSeason3();
         TyresPage.addToCartProduct3();
-        TyresPage.sleep(6000);
+
 
         actualResult = CartPage.readMessageFromCart();
         Assert.assertEquals(actualResult, expectedResult);
-        System.out.println(actualResult + " Items in Cart");
+        System.out.println(actualResult);
     }
 }

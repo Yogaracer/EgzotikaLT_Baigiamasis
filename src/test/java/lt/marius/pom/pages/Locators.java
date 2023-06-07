@@ -35,7 +35,7 @@ public class Locators {
                             "div[@class='chosen-drop']//input");
 
             public static By buttonSearch = By.xpath(
-                    "//div[@class='search-container']//span[contains(text(),'Search')]");
+                    "//div[@class='search-container']//button[@title='Search']");
 
             public static By menuItemTyres = By.xpath(
                     "//div[@class='mega-content']//span[contains(text(),'Tyres')]");
@@ -67,33 +67,31 @@ public class Locators {
 
         public class Tyres {
 
-            public static By tyresSizeAttributes = By.xpath(
-                    "//div[@id='amasty-shopby-product-list']//span[@class='attribute-item size']");
             public static By allSeasonTyres = By.xpath(
                     "//div[@class='block-content filter-content']//form[@class='am-ranges ']//" +
-                            "span[contains(text(),'Allseason')]");
+                            "li[@data-label='Allseason']");
             public static By winterTyres = By.xpath(
                     "//div[@class='block-content filter-content']//form[@class='am-ranges ']//" +
-                            "span[contains(text(),'Winter')]");
+                            "li[@data-label='Winter']");
             public static By summerTyres = By.xpath(
                     "//div[@class='block-content filter-content']//form[@class='am-ranges ']//" +
-                            "span[contains(text(),'Summer')]");
+                            "li[@data-label='Summer']");
             public static By buttonAddProduct1ToCart = By.xpath("//form[@data-product-sku='R0000719']//button");
             public static By buttonAddProduct2ToCart = By.xpath("//form[@data-product-sku='R0002331']//button");
             public static By buttonAddProduct3ToCart = By.xpath("//form[@data-product-sku='STM00006']//button");
-
-
+            public static By menuItemTyres = By.xpath(
+                    "//div[@class='mega-content']//a[@id='sm_megamenu_28']");
+            public static By tyresSizeSeason = By.xpath("//div[@id='amasty-shopby-product-list']//" +
+                    "span[@class='attribute-item tire-season']");
+            public static By tyresSizeAttributes = By.xpath(
+                    "//div[@id='amasty-shopby-product-list']//span[@class='attribute-item size']");
+            public static By seasonMenu = By.xpath(
+                    "//div[@class='block-content filter-content']//ol[@class='items am-filter-items-tire_season                -am-multiselect']");
         }
 
         public class Cart {
-            public static By menuItemTyres = By.xpath(
-                    "//div[@class='mega-content']//span[contains(text(),'Tyres')]");
             public static By itemsInCart = By.xpath("//div[@id='opc-sidebar']//strong[@role='heading']//span");
+            public static By orderSummaryList = By.xpath("//div[@class='order-summary hoverable']");
         }
     }
 }
-
-
-
-
-

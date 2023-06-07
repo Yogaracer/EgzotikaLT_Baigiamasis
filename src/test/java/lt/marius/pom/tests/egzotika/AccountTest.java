@@ -16,12 +16,12 @@ public class AccountTest extends TestBase {
 
     @Test
     public static void testNewUserRegistrationWithValidData() {
-        String messageFirstName = "liudas";
-        String messageLastName = "liudaitis";
-        String messageEmail = "liudasliudaitis@gmail.com";
-        String messagePassword = "9822dropdown";
+        String messageFirstName = "Jonas";
+        String messageLastName = "Bliudaitis";
+        String messageEmail = "Jonasbliudaitis@gmail.com";
+        String messagePassword = "9825dropdown";
 
-        String expectedResult = "liudas liudaitis\nliudasliudaitis@gmail.com";
+        String expectedResult = "Jonas Bliudaitis\nJonasbliudaitis@gmail.com";
         String actualResult;
 
         HomePage.clickOnCreateAnAccountHeaderLink();
@@ -54,7 +54,6 @@ public class AccountTest extends TestBase {
         AccountPage.insertUserPassword(messagePassword);
         AccountPage.confirmUserPassword(messagePassword);
         AccountPage.clickOnButtonCreateAnAccount();
-        AccountPage.sleep(3000);
         actualResult = AccountPage.readRegistrationErrorNotification();
 
         Assert.assertEquals(actualResult, expectedResult);
@@ -69,8 +68,8 @@ public class AccountTest extends TestBase {
         String actualResult;
 
         HomePage.clickOnSignInHeaderLink();
-        AccountPage.insertSigninEmailAddress(messageEmail);
-        AccountPage.insertSigninPassword(messagePassword);
+        AccountPage.insertSignInEmailAddress(messageEmail);
+        AccountPage.insertSignInPassword(messagePassword);
         AccountPage.clickOnButtonSignIn();
         actualResult = AccountPage.readHeaderLinkName();
 
@@ -89,14 +88,12 @@ public class AccountTest extends TestBase {
         String actualResult;
 
         HomePage.clickOnSignInHeaderLink();
-        AccountPage.insertSigninEmailAddress(messageEmail);
-        AccountPage.insertSigninPassword(messagePassword);
+        AccountPage.insertSignInEmailAddress(messageEmail);
+        AccountPage.insertSignInPassword(messagePassword);
         AccountPage.clickOnButtonSignIn();
-        AccountPage.sleep(3000);
 
         actualResult = AccountPage.readErrorNotification();
 
         Assert.assertEquals(actualResult, expectedResult);
     }
 }
-

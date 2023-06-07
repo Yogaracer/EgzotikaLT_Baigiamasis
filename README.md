@@ -1,6 +1,6 @@
 # Test automation course final work
 
-Tested webpage: www.egzotika.en 
+Tested webpage: www.egzotika.lt 
 
 Github repository: https://github.com/Yogaracer/EgzotikaLT_Baigiamasis
 
@@ -57,7 +57,7 @@ temporarily. Please wait and try again later." appeared <br>
 
 ### 5.  Products search by dimensions 
 
-5.1 Open www.egzotika.en website <br>
+5.1 Open www.egzotika.lt/en/ website <br>
 5.2 Click on search category "Tyres" <br>
 5.3 Insert product width "225" in a filter category <br>
 5.4 Insert product height "45" in a filter category <br>
@@ -68,7 +68,7 @@ temporarily. Please wait and try again later." appeared <br>
 Expected result: all product in the search list contains attributes "225", "45", "R19" <br>
 
 ### 6. Add products into shopping cart
-6.1 Open www.egzotika.en/tyres website <br>
+6.1 Open www.egzotika.lt/en/tyres website <br>
 6.2 Click on "Allseason" option on the left side "Season" options menu  <br> 
 6.3 Add product "ROADSTONE N Priz 4 season" to cart" by clicking button<br>
 6.4. Click on menu item "Tyres" <br>

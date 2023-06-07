@@ -38,11 +38,11 @@ public class AccountPage {
         return Common.getTextFromElement(Locators.Egzotika.CustomerAccount.contactInformation);
     }
 
-    public static void insertSigninEmailAddress(String messageEmail) {
+    public static void insertSignInEmailAddress(String messageEmail) {
         Common.sendKeysToElement(Locators.Egzotika.CustomerAccount.signInEmail, messageEmail);
     }
 
-    public static void insertSigninPassword(String messagePassword) {
+    public static void insertSignInPassword(String messagePassword) {
         Common.sendKeysToElement(Locators.Egzotika.CustomerAccount.signInPassword, messagePassword);
     }
 
@@ -61,6 +61,4 @@ public class AccountPage {
     public static String readHeaderLinkName() {
         return Common.getTextFromElement(Locators.Egzotika.CustomerAccount.headerLinkName);
     }
-
-
 }

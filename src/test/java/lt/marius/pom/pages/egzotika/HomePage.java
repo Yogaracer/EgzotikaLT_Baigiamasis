@@ -71,12 +71,6 @@ public class HomePage {
     }
 
     public static void clickOnButtonSearch() {
-        Common.clickOnElementByAction(Locators.Egzotika.Home.buttonSearch);
+        Common.clickOnElement(Locators.Egzotika.Home.buttonSearch);
     }
-
-    public static void clickOnMenuItemTyres() {Common.clickOnElementByAction(Locators.Egzotika.Home.menuItemTyres); }
 }
-
-
-
-

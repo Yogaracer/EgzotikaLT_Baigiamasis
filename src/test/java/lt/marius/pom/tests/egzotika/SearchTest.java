@@ -22,7 +22,11 @@ public class SearchTest extends TestBase {
         String RimSize = "19";
         String tyresSeason = "Allseason";
 
-        String expectedResult = "225/ " + "45 " + "R19";
+
+        List<String> actualResult1;
+        List<String>  actualResult2;
+        String expectedResult1 = "225/ 45 R19";
+        String expectedResult2 = "Tire Season Index Allseason";
 
         HomePage.clickOnTyresWidthSelector();
         HomePage.enterTyresWidth(tyresWidth);
@@ -38,9 +42,13 @@ public class SearchTest extends TestBase {
         HomePage.confirmTyresSeason();
         HomePage.clickOnButtonSearch();
 
-        List<String> actualResult = TyresPage.readFoundTyresSizeAttributes();
-        Assert.assertTrue(actualResult.contains(expectedResult));
+        actualResult1 = TyresPage.readFoundTyresSizeAttributes();
+        System.out.println(actualResult1);
+        actualResult2 = TyresPage.readFoundTyresSeason();
+        System.out.println(actualResult2);
+
+        Assert.assertTrue(actualResult1.contains(expectedResult1));
+        Assert.assertTrue(actualResult2.contains(expectedResult2));
 
     }
 }
-
